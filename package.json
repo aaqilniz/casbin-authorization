@@ -1,0 +1,66 @@
+{
+  "name": "casbin-authorization",
+  "version": "0.0.1",
+  "description": "a loopback4 extension to implement casbin based authorization",
+  "keywords": [
+    "loopback-extension",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "18 || 20 || 22"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "npm run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
+    "rebuild": "npm run clean && npm run build",
+    "postinstall": "npx patch-package"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Muhammad Aaqil <aaqilcs102@gmail.com>",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "peerDependencies": {
+    "@loopback/core": "^6.1.2"
+  },
+  "dependencies": {
+    "@loopback/authorization": "^0.15.7",
+    "@loopback/context": "^7.0.9",
+    "casbin": "^5.34.0",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^11.0.5",
+    "@loopback/core": "^6.1.2",
+    "@loopback/eslint-config": "^15.0.4",
+    "@loopback/testlab": "^7.0.6",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "^16.18.101",
+    "eslint": "^8.57.0",
+    "mocha": "^10.8.2",
+    "source-map-support": "^0.5.21",
+    "ts-mocha": "^10.0.0",
+    "typescript": "~5.2.2"
+  }
+}
