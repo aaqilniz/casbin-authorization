@@ -41,7 +41,10 @@ export class CasbinAuthorizationProvider implements Provider<Authorizer> {
 
     let allow = false;
     let restrictedProperties: string[] = [];
-    const policiesFromDB = await this.policyRepo.find({ where: { object } });
+    const rolesFromDB = await this.policyRepo.find({ where: { role: subject } });
+    if (rolesFromDB && !rolesFromDB.length) return AuthorizationDecision.DENY;
+    const role = rolesFromDB[0].object;
+    const policiesFromDB = await this.policyRepo.find({ where: { object, role } });
 
     const groupPolicy = 'g';
     const rolesPoliciesFromDB = await this.policyRepo.find({ where: { policyType: groupPolicy } })
