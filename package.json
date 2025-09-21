@@ -9,7 +9,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
-    "node": "18 || 20 || 22"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "build": "lb-tsc",
@@ -42,17 +42,24 @@
     "!*/__tests__"
   ],
   "peerDependencies": {
-    "@loopback/core": "^6.1.2"
+    "@loopback/core": ">=6.1.2 <8.0.0",
+    "@loopback/authorization": ">=0.15.0 <0.16.0"
+  },
+  "peerDependenciesMeta": {
+    "@loopback/authorization": {
+      "optional": false
+    }
   },
   "dependencies": {
-    "@loopback/authorization": "^0.15.7",
-    "@loopback/context": "^7.0.9",
+    "@loopback/context": ">=6.0.0 <8.0.0",
     "casbin": "^5.34.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@loopback/build": "^11.0.5",
-    "@loopback/core": "^6.1.2",
+    "@loopback/core": "^7.0.4",
+    "@loopback/authorization": "^0.15.7",
+    "@loopback/context": "^7.0.9",
     "@loopback/eslint-config": "^15.0.4",
     "@loopback/testlab": "^7.0.6",
     "@types/mocha": "^10.0.9",
