@@ -1,6 +1,6 @@
 {
   "name": "casbin-authorization",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a loopback4 extension to implement casbin based authorization",
   "keywords": [
     "loopback-extension",
